@@ -31,7 +31,6 @@ def main():
     uri = args.URI
     if args.n:
         process_num = args.n
-        print('Number of process: {}'.format(process_num))
     else:
         process_num = DEFAULT_PROCESS_NUM
     print('Number of process: {}'.format(process_num))
@@ -66,7 +65,7 @@ def main():
 
     start = 0
     end = start + chunk_size
-    if accept_ranges:
+    if accept_ranges and accept_ranges != 'none':
         processes = []
         for i in range(process_num):
             p = Process(target=download, args=(uri, i, start, end))
